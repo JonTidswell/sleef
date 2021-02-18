@@ -93,4 +93,7 @@ double countULP2sp(float d, mpfr_t c);
 void mpfr_sinpi(mpfr_t ret, mpfr_t arg, mpfr_rnd_t rnd);
 void mpfr_cospi(mpfr_t ret, mpfr_t arg, mpfr_rnd_t rnd);
 void mpfr_lgamma_nosign(mpfr_t ret, mpfr_t arg, mpfr_rnd_t rnd);
+
+void mpfr_erfinv (mpfr_t rop, mpfr_t op, mpfr_rnd_t rnd);
+
 #endif
