@@ -2414,35 +2414,37 @@ EXPORT CONST float xerfcf_u15(float a) {
 
 EXPORT CONST float xerfinvf_u4(float x) {
   // Giles erfinv gems
-  float t, w, p, r;                                         
+  float t, w, p, r, wc, wt, pc, pt;                                         
   t = (1.0f - x) * (1.0f + x);                                                    
   w = - xlogf_u1( t );                    
                                                       
   if ( w < 5.000000f ) {                              
-    w = w - 2.500000f;                                
-    p =   2.81022636e-08f;                            
-    p =   3.43273939e-07f + p*w;                      
-    p =   -3.5233877e-06f + p*w;                      
-    p =  -4.39150654e-06f + p*w;                      
-    p =    0.00021858087f + p*w;                      
-    p =   -0.00125372503f + p*w;                      
-    p =   -0.00417768164f + p*w;                      
-    p =      0.246640727f + p*w;                      
-    p =       1.50140941f + p*w;                      
+    wc = w - 2.500000f;                                
+    pc =   2.81022636e-08f;                            
+    pc =   3.43273939e-07f + pc * wc;                      
+    pc =   -3.5233877e-06f + pc * wc;                      
+    pc =  -4.39150654e-06f + pc * wc;                      
+    pc =    0.00021858087f + pc * wc;                      
+    pc =   -0.00125372503f + pc * wc;                      
+    pc =   -0.00417768164f + pc * wc;                      
+    pc =      0.246640727f + pc * wc;                      
+    pc =       1.50140941f + pc * wc;                      
   }                                                   
   else {                                              
-    w = xsqrtf_u05(w) - 3.000000f;                         
-    p =  -0.000200214257f;                            
-    p =   0.000100950558f + p*w;                      
-    p =    0.00134934322f + p*w;                      
-    p =   -0.00367342844f + p*w;                      
-    p =    0.00573950773f + p*w;                      
-    p =    -0.0076224613f + p*w;                      
-    p =    0.00943887047f + p*w;                      
-    p =       1.00167406f + p*w;                      
-    p =       2.83297682f + p*w;                      
-  }                                                   
+    wt = xsqrtf_u05(w) - 3.000000f;                         
+    pt =  -0.000200214257f;                            
+    pt =   0.000100950558f + pt * wt;                      
+    pt =    0.00134934322f + pt * wt;                      
+    pt =   -0.00367342844f + pt * wt;                      
+    pt =    0.00573950773f + pt * wt;                      
+    pt =    -0.0076224613f + pt * wt;                      
+    pt =    0.00943887047f + pt * wt;                      
+    pt =       1.00167406f + pt * wt;                      
+    pt =       2.83297682f + pt * wt;                      
+  }
 
+  p = ( w < 5.0f ) ? pc : pt;
+  
   r = (t < 0.0f) ? SLEEF_NANf : p * x;                                                 
   r = (t == 0.0) ? SLEEF_INFINITYf * x : r;                                                 
   r = xisnanf(t) ? SLEEF_NANf : r;
