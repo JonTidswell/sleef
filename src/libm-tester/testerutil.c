@@ -444,7 +444,7 @@ void mpfr_erfinv (mpfr_t ret, mpfr_t arg, mpfr_rnd_t rnd) {
     mpfr_neg( tmp1, tmp1, MPFR_RNDN );
 
     // evaluate the polynomial in floating point
-    double w = mpfr_get_d( ret, MPFR_RNDN );
+    double w = mpfr_get_d( tmp1, MPFR_RNDN );
     double r = erfinv_base( w );
 
     // result = x * poly
