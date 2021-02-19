@@ -197,7 +197,7 @@ double child_tgamma_u1(double x) { child_d_d("tgamma_u1", x); }
 double child_lgamma_u1(double x) { child_d_d("lgamma_u1", x); }
 double child_erf_u1(double x) { child_d_d("erf_u1", x); }
 double child_erfc_u15(double x) { child_d_d("erfc_u15", x); }
-double child_erfinv_u4(double x) { child_d_d("erfinv_u4", x); }
+double child_erfinv_u5(double x) { child_d_d("erfinv_u5", x); }
 
 //
 
@@ -333,7 +333,7 @@ float child_tgammaf_u1(float x) { child_f_f("tgammaf_u1", x); }
 float child_lgammaf_u1(float x) { child_f_f("lgammaf_u1", x); }
 float child_erff_u1(float x) { child_f_f("erff_u1", x); }
 float child_erfcf_u15(float x) { child_f_f("erfcf_u15", x); }
-float child_erfinvf_u4(float x) { child_f_f("erfinvf_u4", x); }
+float child_erfinvf_u5(float x) { child_f_f("erfinvf_u5", x); }
 
 float child_fastsinf_u3500(float x) { child_f_f("fastsinf_u3500", x); }
 float child_fastcosf_u3500(float x) { child_f_f("fastcosf_u3500", x); }
@@ -2809,9 +2809,9 @@ void do_test() {
     }
 
     {
-      fprintf(stderr, "erfinv_u4 denormal/nonnumber test : ");
+      fprintf(stderr, "erfinv_u5 denormal/nonnumber test : ");
       double xa[] = { -2, -1, +0.0, -0.0, +1, +2, -1e-320, +1e-323, POSITIVE_INFINITY, NEGATIVE_INFINITY, NAN };
-      for(i=0;i<sizeof(xa)/sizeof(double) && success;i++) cmpDenorm_d(mpfr_erfinv, child_erfinv_u4, xa[i]);
+      for(i=0;i<sizeof(xa)/sizeof(double) && success;i++) cmpDenorm_d(mpfr_erfinv, child_erfinv_u5, xa[i]);
       showResult(success);
     }
   }
@@ -3442,9 +3442,9 @@ void do_test() {
     }
 
     {
-      fprintf(stderr, "erfinvf_u4 denormal/nonnumber test : ");
+      fprintf(stderr, "erfinvf_u5 denormal/nonnumber test : ");
       float xa[] = { -2, -1, +0.0, -0.0, +1, +2, +1e-40, -1e-41, POSITIVE_INFINITY, NEGATIVE_INFINITY, NAN };
-      for(i=0;i<sizeof(xa)/sizeof(float) && success;i++) cmpDenorm_f(mpfr_erfinv, child_erfinvf_u4, xa[i]);
+      for(i=0;i<sizeof(xa)/sizeof(float) && success;i++) cmpDenorm_f(mpfr_erfinv, child_erfinvf_u5, xa[i]);
       showResult(success);
     }
   }
@@ -4185,8 +4185,8 @@ void do_test() {
 
     //
 
-    fprintf(stderr, "erfinv_u4 : ");
-    for(d = 0;d < 1 && success;d += 0.002) checkAccuracy_d(mpfr_erfinv, child_erfinv_u4, d, 4.0);
+    fprintf(stderr, "erfinv_u5 : ");
+    for(d = 0;d < 1 && success;d += 0.002) checkAccuracy_d(mpfr_erfinv, child_erfinv_u5, d, 5.0);
     showResult(success);
 
     //
@@ -5062,8 +5062,8 @@ void do_test() {
 
     //
 
-    fprintf(stderr, "erfinvf_u4 : ");
-    for(d = 0;d < 1 && success;d += 0.002) checkAccuracy_f(mpfr_erfinv, child_erfinvf_u4, d, 4.0);
+    fprintf(stderr, "erfinvf_u5 : ");
+    for(d = 0;d < 1 && success;d += 0.002) checkAccuracy_f(mpfr_erfinv, child_erfinvf_u5, d, 5.0);
     showResult(success);
   }
 }

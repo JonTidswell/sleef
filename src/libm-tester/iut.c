@@ -388,10 +388,10 @@ int main(int argc, char **argv) {
       sscanf(buf, "erfc_u15 %" PRIx64, &u);
       u = d2u(xerfc_u15(u2d(u)));
       printf("%" PRIx64 "\n", u);
-    } else if (startsWith(buf, "erfinv_u4 ")) {
+    } else if (startsWith(buf, "erfinv_u5 ")) {
       uint64_t u;
-      sscanf(buf, "erfinv_u4 %" PRIx64, &u);
-      u = d2u(xerfinv_u4(u2d(u)));
+      sscanf(buf, "erfinv_u5 %" PRIx64, &u);
+      u = d2u(xerfinv_u5(u2d(u)));
       printf("%" PRIx64 "\n", u);
     }
 
@@ -769,10 +769,10 @@ int main(int argc, char **argv) {
       sscanf(buf, "erfcf_u15 %x", &u);
       u = f2u(xerfcf_u15(u2f(u)));
       printf("%x\n", u);
-    } else if (startsWith(buf, "erfinvf_u4 ")) {
+    } else if (startsWith(buf, "erfinvf_u5 ")) {
       uint32_t u;
-      sscanf(buf, "erfinvf_u4 %x", &u);
-      u = f2u(xerfinvf_u4(u2f(u)));
+      sscanf(buf, "erfinvf_u5 %x", &u);
+      u = f2u(xerfinvf_u5(u2f(u)));
       printf("%x\n", u);
     }
 
